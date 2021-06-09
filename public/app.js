@@ -37,15 +37,25 @@ new Vue({
 				return;
 			}
 
-			fetch('/api/todo', {
+			const query = `
+                mutation {
+                    createTodo(todo: { title: "${title}" }) {
+                        id title done createdAt updatedAt
+                    }
+                }
+            `;
+
+			fetch('/graphql', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
+					Accept: 'application/json',
 				},
-				body: JSON.stringify({ title }),
+				body: JSON.stringify({ query }),
 			})
 				.then(res => res.json())
-				.then(({ todo }) => {
+				.then(response => {
+					const todo = response.data.createTodo;
 					this.todos.push(todo);
 				})
 				.catch(e => console.log(e));
