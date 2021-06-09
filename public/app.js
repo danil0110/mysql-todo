@@ -8,6 +8,13 @@ new Vue({
 			todos: [],
 		};
 	},
+	created() {
+		fetch('/api/todo', { method: 'GET' })
+			.then(res => res.json())
+			.then(todos => {
+				this.todos = todos;
+			});
+	},
 	methods: {
 		addTodo() {
 			const title = this.todoTitle.trim();
