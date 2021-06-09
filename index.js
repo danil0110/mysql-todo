@@ -5,8 +5,6 @@ const schema = require('./graphql/schema');
 const resolver = require('./graphql/resolver');
 const path = require('path');
 
-// const todoRoutes = require('./routes/todo');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -19,8 +17,6 @@ app.use(
 		graphiql: true,
 	})
 );
-
-// app.use('/api/todo', todoRoutes);
 
 app.use((req, res, next) => {
 	res.sendFile('/index.html');
