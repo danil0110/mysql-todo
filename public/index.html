@@ -61,7 +61,8 @@
 										<v-spacer></v-spacer>
 
 										<p class="text-xs-right">
-											<b>{{todos.length}}</b> Задач
+											Кол-во задач:
+											<b>{{todos.length}}</b>
 										</p>
 
 										<v-flex xs12>
@@ -81,7 +82,7 @@
 										class="subheading"
 										v-if="todos.length === 0"
 									>
-										У вас 0 задач, добавьте новую
+										У вас нет задач, добавьте новую
 									</v-subheader>
 									<v-subheader class="subheading" v-else>
 										Ваши задачи
@@ -92,7 +93,7 @@
 												<v-checkbox
 													v-if="!todo.done"
 													v-model="todo.done"
-                                                    @change="completeTodo(todo.id)"
+													@change="completeTodo(todo.id)"
 													:dark="isDark"
 												></v-checkbox>
 											</v-list-tile-action>
@@ -103,10 +104,10 @@
 													{{todo.title | capitalize}}
 												</v-list-tile-title>
 												<v-list-tile-sub-title>
-													Добавлено
-													{{todo.createdAt | date(true)}}
-													(изменено
-													{{todo.updatedAt | date(true)}})
+													Добавлено {{todo.createdAt |
+													date(true)}} (изменено
+													{{todo.updatedAt |
+													date(true)}})
 												</v-list-tile-sub-title>
 											</v-list-tile-content>
 											<v-btn
